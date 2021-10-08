@@ -138,7 +138,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--dataset', help='Path to the downloaded speed dataset.', default='datasets/')
-    parser.add_argument('--dataset', help='Path to the downloaded speed dataset.')
     parser.add_argument('--epochs', help='Number of epochs for training.', default=20)
     parser.add_argument('--batch', help='number of samples in a batch.', default=32)
     parser.add_argument('--run_gpu', help='Boolean to define the use or not of gpu', default=True)

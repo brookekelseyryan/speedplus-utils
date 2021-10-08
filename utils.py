@@ -61,7 +61,7 @@ def process_json_dataset(root_dir):
 
     for image_ann in train_images_labels:
         partitions['train'].append(image_ann['filename'])
-        labels[image_ann['filename']] = {'q': image_ann['q_vbs2tango'], 'r': image_ann['r_Vo2To_vbs_true']}
+        labels[image_ann['filename']] = {'q': image_ann['q_vbs2tango_true'], 'r': image_ann['r_Vo2To_vbs_true']}
 
     for image in test_image_list:
         partitions['validation'].append(image['filename'])
@@ -205,14 +205,14 @@ if has_pytorch:
                     label_list = json.load(f)
             else:
                 self.image_root = os.path.join(speed_root, split, 'images')
-                with open(os.path.join(speed_root, split, split + '.json'), 'r') as f:
+                with open(os.path.join(speed_root, split, 'test.json'), 'r') as f:
                     label_list = json.load(f)
 
             self.sample_ids = [label['filename'] for label in label_list]
             self.train = split == 'train'
 
             if self.train:
-                self.labels = {label['filename']: {'q': label['q_vbs2tango'], 'r': label['r_Vo2To_vbs_true']}
+                self.labels = {label['filename']: {'q': label['q_vbs2tango_true'], 'r': label['r_Vo2To_vbs_true']}
                                for label in label_list}
             self.split = split
             self.transform = transform
@@ -259,7 +259,7 @@ if has_tf:
             self.preprocessor = preprocessor
             self.dim = dim
             self.batch_size = batch_size
-            self.labels = self.labels = {label['filename']: {'q': label['q_vbs2tango'], 'r': label['r_Vo2To_vbs_true']}
+            self.labels = self.labels = {label['filename']: {'q': label['q_vbs2tango_true'], 'r': label['r_Vo2To_vbs_true']}
                                          for label in label_list}
             self.list_IDs = [label['filename'] for label in label_list]
             self.n_channels = n_channels

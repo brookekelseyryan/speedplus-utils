@@ -24,7 +24,7 @@ def evaluate(model, dataset, append_submission, dataset_root):
             image_list = json.load(f)
     else:
         img_root = os.path.join(dataset_root, dataset, "images")
-        with open(os.path.join(dataset_root, dataset, dataset + '.json'), 'r') as f:
+        with open(os.path.join(dataset_root, dataset, 'test.json'), 'r') as f:
             image_list = json.load(f)
 
     print('Running evaluation on {} set...'.format(dataset))
