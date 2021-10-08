@@ -19,8 +19,8 @@ The purpose of this repository is to help competitiors of the
 ### Setting up
 Clone this repository:
 ```
-git clone https://gitlab.com/EuropeanSpaceAgency/speedplus_starter_kit
-cd speedplus_starter_kit
+git clone https://gitlab.com/EuropeanSpaceAgency/speedplus-utils.git
+cd speedplus-utils
 ```
 Install dependencies:  
 ```
@@ -32,7 +32,7 @@ pip install jupyter  # optional for running notebook
 
 ### Dataset
 
-1. Create a folder called `datasets` in `speedplus_starter_kit`. 
+1. Create a folder called `datasets` in `speedplus-utils`. 
 2. Extract the .zip file of the [SPEED+ dataset](https://kelvins.esa.int/pose-estimation-2021/data/) to the folder `datasets`
 
 ### Training examples
