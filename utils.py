@@ -125,8 +125,19 @@ def project(q, r):
 
         # projection to image plane
         points_image_plane = Camera.K.dot(points_camera_frame)
-
-        x, y = (points_image_plane[0], points_image_plane[1])
+        x0, y0 = (points_image_plane[0], points_image_plane[1])
+        
+        # apply distortion
+        dist = Camera.dcoef
+        
+        r2 = x0*x0 + y0*y0
+        cdist = 1 + dist[0]*r2 + dist[1]*r2*r2 + dist[4]*r2*r2*r2
+        x1  = x0*cdist + dist[2]*2*x0*y0 + dist[3]*(r2 + 2*x0*x0)
+        y1  = y0*cdist + dist[2]*(r2 + 2*y0*y0) + dist[3]*2*x0*y0
+        
+        x = Camera.K[0,0]*x1 + Camera.K[0,2]
+        y = Camera.K[1,1]*y1 + Camera.K[1,2]
+        
         return x, y
 
 
